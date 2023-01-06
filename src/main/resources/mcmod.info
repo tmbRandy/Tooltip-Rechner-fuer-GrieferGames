@@ -1,0 +1,24 @@
+{
+	"modListVersion": 2,
+	"modList": [
+		{
+			"modid": "de.tmb.tooltipRechner",
+			"name": "Tooltip Rechner",
+			"description": "Diese Mod rechnet die komprimierten Items auf GrieferGames in DKs, Stacks und Items um.",
+			"mcversion": "${mcversion}",
+			"version": "${version}",
+			"authorList": [
+				"TMB_Randy"
+			],
+			"credits": "TMB",
+			"dependants": [  ],
+			"dependencies": [ ],
+			"parent": "",
+			"requiredMods": [  ],
+			"logoFile": "https://cdn.discordapp.com/icons/498950771363282964/a_f21a8fe1eba173e40c38a21dc9520d32.png?size=128",
+			"screenshots": [  ],
+			"updateUrl": "",
+			"url": ""
+		}
+	]
+}
