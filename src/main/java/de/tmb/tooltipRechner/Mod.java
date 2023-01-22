@@ -7,28 +7,34 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@net.minecraftforge.fml.common.Mod(modid = Mod.MODID, version = Mod.VERSION)
+@net.minecraftforge.fml.common.Mod(modid = Mod.MODID, name = Mod.NAME, version = Mod.VERSION)
 public class Mod
 {
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event) { MinecraftForge.EVENT_BUS.register(Mod.this); }
 
-    public static final String MODID = "tooltipRechner";
-    public static final String VERSION = "1.0";
+    public static final String MODID = "tooltiprechner";
+    public static final String NAME = "Tooltip Rechner";
+    public static final String VERSION = "1.12.2-1.0";
+
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+        MinecraftForge.EVENT_BUS.register(Mod.this);
+    }
 
     @SubscribeEvent
     public void onRenderTooltip(ItemTooltipEvent event) {
-        ItemStack stack = event.itemStack;
+        ItemStack stack = event.getItemStack();
+
 
         if(stack.hasTagCompound()) {
 
-            if (stack.getTagCompound().hasKey("currentAmount") || stack.getTagCompound().hasKey("stackSize")) {
+            if(stack.getTagCompound().hasKey("currentAmount") || stack.getTagCompound().hasKey("stackSize")) {
                 int currentAmount;
 
-                if (stack.getTagCompound().hasKey("currentAmount")) {
-                    currentAmount = stack.getTagCompound().getInteger("currentAmount") * stack.stackSize;
+                if(stack.getTagCompound().hasKey("currentAmount")) {
+                    currentAmount = stack.getTagCompound().getInteger("currentAmount") * stack.getCount();
                 } else {
-                    currentAmount = stack.getTagCompound().getInteger("stackSize") * stack.stackSize;
+                    currentAmount = stack.getTagCompound().getInteger("stackSize") * stack.getCount();
                 }
 
                 int maxStackSize = stack.getMaxStackSize();
@@ -39,7 +45,7 @@ public class Mod
                 int stacks = rest / maxStackSize;
                 int items = rest - (stacks * maxStackSize);
 
-                event.toolTip.add("§e" + DKs + " DKs §6" + stacks + " Stacks §e" + items + " Items");
+                event.getToolTip().add("§e" + DKs + " DKs §6" + stacks + " Stacks §e" + items + " Items");
             }
         }
     }
