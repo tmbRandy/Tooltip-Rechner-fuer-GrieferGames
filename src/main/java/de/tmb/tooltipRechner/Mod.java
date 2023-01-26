@@ -70,9 +70,33 @@ public class Mod
         }
     }
 
+    private void setup(final FMLCommonSetupEvent event)
+    { }
+
+    private void doClientStuff(final FMLClientSetupEvent event) {
+
+    }
+
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         InterModComms.sendTo("tooltiprechner", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
-    
+
+    private void processIMC(final InterModProcessEvent event)
+    {
+
+    }
+
+    @SubscribeEvent
+    public void onServerStarting(FMLServerStartingEvent event) {
+
+    }
+
+    @net.minecraftforge.fml.common.Mod.EventBusSubscriber(bus= net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD)
+    public static class RegistryEvents {
+        @SubscribeEvent
+        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
+
+        }
+    }
 }
