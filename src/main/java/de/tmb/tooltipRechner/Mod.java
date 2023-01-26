@@ -74,15 +74,5 @@ public class Mod
     {
         InterModComms.sendTo("tooltiprechner", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
-
-    @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
-        // do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
-
-    @net.minecraftforge.fml.common.Mod.EventBusSubscriber(bus= net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-
-    }
+    
 }
